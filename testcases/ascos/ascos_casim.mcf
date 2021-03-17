@@ -12,7 +12,8 @@ lower_bc_enabled=.true.
 setfluxlook_enabled=.true. #This must be set to true if running with lower_bc
 viscosity_enabled=.true.
 diffusion_enabled=.true.
-simplecloud_enabled=.true.
+simplecloud_enabled=.false.
+casim_enabled=.true.
 coriolis_enabled=.true.
 damping_enabled=.true.
 forcing_enabled=.true.
@@ -30,22 +31,22 @@ socrates_couple_enabled=.true.
 
 # Control configuration
 display_synopsis_frequency=100
-termination_time=28810.
+termination_time=7200.
 dtm=0.2
 
 # IO server configuration
 ioserver_configuration_file="testcases/ascos/test_description.xml"
-diagnostic_file="diagnostic_files/ascos_simple_dg.nc"
+diagnostic_file="diagnostic_files/ascos_casim_dg.nc"
 moncs_per_io_server=4
 sampling_frequency=2
 3d_sampling_frequency=20
 mm=600.0
 mm1=60.0
-diag_write_freq=28800.0
+diag_write_freq=7200.0
 
 # Checkpoint configuration
 checkpoint_frequency=0
-checkpoint_file="checkpoint_files/ascos_simple_dump.nc"
+checkpoint_file="checkpoint_files/ascos_casim_dump.nc"
 check_walltime_frequency=10
 walltime_limit=00:20:00
 
@@ -67,7 +68,7 @@ thref0=268.7
 surface_pressure=102050.
 surface_reference_pressure=102050.
 x_size=32
-y_size=32
+y_size=2
 z_size=361
 dxx=100
 dyy=100
@@ -77,7 +78,6 @@ hgd=1200., 2400.
 nsmth=40
 rmlmax=6.9
 enable_theta=.true.
-number_q_fields=2
 use_anelastic_equations=.false.
 origional_vertical_grid_setup=.true.
 passive_th=.false.
@@ -184,7 +184,7 @@ surface_albedo = 0.84    # surface albedo (fixed in time)
 mphys_nq_l=1 # cloud liquid mass
 mphys_nd_l=0 # cloud drop number
 mphys_nq_r=0 # rain mass
-mphys_nq_i=0 # ice mass
+mphys_nq_i=1 # ice mass
 mphys_nq_s=0 # snow mass
 mphys_nq_g=0 # graupel mass
 
@@ -195,3 +195,14 @@ fixed_ice_re   = 25.3 # effective radius for ice 25.3 microns
 longwave_exp_decay = 130.0 # longwave rad exponential decay factor
 cltop_longwave_flux = 70.0 # cloud top longwave flux (Wm-2)
 clbase_longwave_flux = 0.0 # cloud base longwave flux (Wm-2)
+
+#CASIM options
+number_q_fields=11
+option=22222
+l_warm=.false.
+
+aerosol_option=0
+iopt_act=0
+iopt_inuc=0
+process_level=0
+l_override_checks = .true.

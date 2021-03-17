@@ -12,7 +12,8 @@ lower_bc_enabled=.true.
 setfluxlook_enabled=.true. #This must be set to true if running with lower_bc
 viscosity_enabled=.true.
 diffusion_enabled=.true.
-simplecloud_enabled=.true.
+simplecloud_enabled=.false.
+casim_enabled=.true.
 coriolis_enabled=.true.
 damping_enabled=.true.
 forcing_enabled=.true.
@@ -30,22 +31,22 @@ socrates_couple_enabled=.true.
 
 # Control configuration
 display_synopsis_frequency=100
-termination_time=28810.
+termination_time=7200.
 dtm=0.2
 
 # IO server configuration
 ioserver_configuration_file="testcases/ascos/test_description.xml"
-diagnostic_file="diagnostic_files/ascos_simple_dg.nc"
+diagnostic_file="diagnostic_files/ascos_casim_dg.nc"
 moncs_per_io_server=4
 sampling_frequency=2
 3d_sampling_frequency=20
 mm=600.0
 mm1=60.0
-diag_write_freq=28800.0
+diag_write_freq=7200.0
 
 # Checkpoint configuration
 checkpoint_frequency=0
-checkpoint_file="checkpoint_files/ascos_simple_dump.nc"
+checkpoint_file="checkpoint_files/ascos_casim_dump.nc"
 check_walltime_frequency=10
 walltime_limit=00:20:00
 
@@ -156,11 +157,11 @@ mcc_temperature_profile  = components/socrates_couple/data/mcc_profiles/one_km/s
 mcc_vapour_profile       = components/socrates_couple/data/mcc_profiles/one_km/sas.q.nc
 mcc_ozone_profile        = components/socrates_couple/data/mcc_profiles/one_km/sas.o3.nc
 # Add options for rad_cntrl
-spectral_file_lw           = /home/home01/eargy/socrates_spectra/ga3_0/sp_lw_ga3_0
-spectral_file_sw           = /home/home01/eargy/socrates_spectra/ga3_0/sp_sw_ga3_0
+spectral_file_lw           = /projects/monc/fra23/socrates_spectra/ga7/sp_lw_ga7
+spectral_file_sw           = /projects/monc/fra23/socrates_spectra/ga7/sp_sw_ga7
 
 # 5 is clear sky, 2 is cloud (ice and liquid no overlap), 1 (ice and liquid full overlap)
-i_cloud_representation  = 2
+i_cloud_representation  = 1
 
 ## Time and location variables for socrates
 l_360 = .true.           #  360 days in year as opposed to 365 (a UM thing
@@ -195,3 +196,14 @@ fixed_ice_re   = 25.3 # effective radius for ice 25.3 microns
 longwave_exp_decay = 130.0 # longwave rad exponential decay factor
 cltop_longwave_flux = 70.0 # cloud top longwave flux (Wm-2)
 clbase_longwave_flux = 0.0 # cloud base longwave flux (Wm-2)
+
+#CASIM options
+number_q_fields=5
+option=22000
+l_warm=.true.
+
+aerosol_option=0
+iopt_act=0
+iopt_inuc=0
+process_level=0
+l_override_checks = .true.
